@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "babel": "^4.3.0"
+    "babel": "^4.3.0",
+    "promisify-node": "^0.1.5"
   }
 }

@@ -1,3 +1,6 @@
+let promisify = require('promisify-node');
+let asyncDelay = promisify(delay);
+
 doSomething();
 
 async function doSomething() {
@@ -8,14 +11,10 @@ async function doSomething() {
 
 async function blocker() {
   console.log({ fn: "blocker", at: "start", time: Date.now() });
-  await somePromiseGenerator();
+  await asyncDelay(2000);
   console.log({ fn: "blocker", at: "finish", time: Date.now() });
 }
 
-function somePromiseGenerator() {
-  return new Promise(function(resolve, reject) {
-    setTimeout(function() {
-      resolve();
-    }, 2000);
-  });
+function delay(time, callback) {
+  setTimeout(callback, time);
 }
